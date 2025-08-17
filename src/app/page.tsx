@@ -17,7 +17,7 @@ export default function Home() {
     <main className="flex flex-col items-center align-center">
       <FallingLeaves />
       <h1 className="container mx-auto title">Buy Tickets</h1>
-      <p className="container mx-auto sub_title">Autumn Cup AGG USA</p>
+      <p className="container mx-auto sub_title">Challenge Championships & Autumn Cup II 2025</p>
       <CountdownTimer />
       <div className="wrapper"></div>
       <Shop/>
