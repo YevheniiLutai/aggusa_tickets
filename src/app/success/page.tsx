@@ -1,19 +1,63 @@
-'use client';
-
-import { useRouter } from 'next/navigation';
+// src/app/success/page.tsx
+import Stripe from 'stripe';
+import Image from 'next/image';
 import FallingLeaves from '../components/FallingLeaves';
+import { cookies, headers } from 'next/headers'; // якщо знадобляться
 
-export default function FailurePage() {
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+  apiVersion: '2025-07-30.basil',
+});
+
+// Тут використовуємо стандартний PageProps для Next.js 15
+interface SuccessPageProps {
+  searchParams: { session_id?: string };
+}
+
+export default async function SuccessPage({ searchParams }: SuccessPageProps) {
+  const sessionId = searchParams?.session_id;
+
+  if (!sessionId) {
     return (
-        <div className="cancel mx-auto">
-            <FallingLeaves />
-            <h1 className="cancel_title">Payment Failed ❌</h1>
-            <p className="cancel_subtitle">Something went wrong. Please try again</p>
-            <img src="/tired.png" alt="Payment Failed" />
-            <button className="cancel_button" onClick={() => window.location.href = 'http://localhost:3000'}>
-                Return Back
-            </button>
-        </div>
+      <div style={{ padding: '2rem', textAlign: 'center' }}>
+        <FallingLeaves />
+        <h1>❌ Sorry</h1>
+      </div>
     );
   }
-  
+
+  try {
+    const session = await stripe.checkout.sessions.retrieve(sessionId, {
+      expand: ['payment_intent.charges'],
+    });
+
+    const paymentIntent = session.payment_intent as Stripe.PaymentIntent;
+    const chargeId = paymentIntent.latest_charge as string;
+    const charge = chargeId ? await stripe.charges.retrieve(chargeId) : null;
+
+    return (
+      <div className='success'>
+        <FallingLeaves />
+        <h1 className='success_title'> Thank you for the payment! ✅</h1>
+        {charge?.receipt_url && (
+          <a
+            href={charge.receipt_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className='cancel_button'
+          >
+            View receipt 📄
+          </a>
+        )}
+        <Image src="/party.png" alt="Payment Success" width={400} height={400} />
+      </div>
+    );
+  } catch (err) {
+    return (
+      <div className='success'>
+        <FallingLeaves />
+        <h1 className='success_title'> Thank you for the payment! ✅</h1>
+        <Image src="/party.png" alt="Payment Success" width={400} height={400} />
+      </div>
+    );
+  }
+}
