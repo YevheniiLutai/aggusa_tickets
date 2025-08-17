@@ -5,6 +5,7 @@ import { ReactNode } from 'react'
 export const metadata = {
   title: 'AGG USA Tickets',
   description: 'AGG USA Tickets — Official Ticketing Platform for Aesthetic Group Gymnastics Events',
+ image: 'banner.jpg'
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {
