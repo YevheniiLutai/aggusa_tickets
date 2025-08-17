@@ -9,20 +9,28 @@ export default function Address() {
   const handleCopy = () => {
     navigator.clipboard.writeText(address);
     setCopied(true);
-    setTimeout(() => setCopied(false), 1500); // Reset after 1.5s
+    setTimeout(() => setCopied(false), 1500);
   };
 
   return (
-    <div
-      className="address group cursor-grab relative"
-      onClick={handleCopy}
-    >
+    <div className="address group relative cursor-pointer" onClick={handleCopy}>
       <p className="address_text font-bold text-center">
         Address: {address}
       </p>
-      <span className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded transition-opacity duration-300 opacity-0 group-hover:opacity-100">
+
+      {/* Підказка */}
+      <span
+        className={`
+          absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2
+          bg-black text-white text-xs px-2 py-1 rounded transition-opacity duration-300
+          opacity-0
+          group-hover:opacity-100
+          ${copied ? 'opacity-100' : ''}
+        `}
+      >
         {copied ? "Copied!" : "Click to copy"}
       </span>
+
       <div className="map mt-2">
         <img src="/map.png" alt={address} className="w-full h-auto rounded" />
       </div>
