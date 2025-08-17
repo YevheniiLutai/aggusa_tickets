@@ -2,19 +2,15 @@
 import Stripe from 'stripe';
 import Image from 'next/image';
 import FallingLeaves from '../components/FallingLeaves';
-import { cookies, headers } from 'next/headers'; // якщо знадобляться
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2025-07-30.basil',
 });
 
-// Тут використовуємо стандартний PageProps для Next.js 15
-interface SuccessPageProps {
-  searchParams: { session_id?: string };
-}
-
-export default async function SuccessPage({ searchParams }: SuccessPageProps) {
-  const sessionId = searchParams?.session_id;
+export default async function SuccessPage({ searchParams }: { searchParams: Promise<{ session_id?: string }> }) {
+  // Чекаємо searchParams
+  const params = await searchParams;
+  const sessionId = params?.session_id;
 
   if (!sessionId) {
     return (
