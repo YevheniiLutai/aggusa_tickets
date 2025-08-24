@@ -10,7 +10,7 @@ type CartItem = {
 };
 
 const products = [
-  { name: 'Entry ticket\n Challenge Day 1 & Autumn Cup II Day 1 Saturday September 20th', price: 35, img: '/ticket1.svg' },
+  { name: 'Entry ticket\n Challenge Day 1 & Autumn Cup II Day 1 Saturday September 20th', price: 1, img: '/ticket1.svg' },
   { name: 'Entry ticket\n Challenge Day 2 & Autumn Cup II Day 2 Sunday September 21st', price: 35, img: '/ticket1.svg' },
   { name: 'Entry ticket\n Challenge & Autumn Cup II\n 2 days Saturday & Sunday September 20 & 21', price: 50, img: '/ticket2.svg' },
   { name: 'Hand bells', price: 3, img: '/hand_bells.jpg' },
