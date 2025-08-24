@@ -17,7 +17,7 @@ const products = [
   { name: 'Party blower', price: 3, img: '/item2.png' },
   { name: 'Hand Clapper', price: 5, img: '/item3.png' },
   { name: 'Raffle ticket: if you win the raffle you will receive product with your own team ', price: 8, img: '/raffle1.jpg' },
-  { name: 'Metal Cowbells', price: 8, img: '/item4.png' },
+  { name: 'Metal Cowbell', price: 8, img: '/item4.png' },
   { name: 'Raffle ticket: if you win the raffle you will receive product with your own team', price: 8, img: '/raffle4.jpeg' },
 ];
 
