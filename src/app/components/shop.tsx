@@ -10,15 +10,15 @@ type CartItem = {
 };
 
 const products = [
-  { name: 'Challenge Day 1 & Autumn Cup II Day 1 Saturday September 20th', price: 35, img: '/ticket1.svg' },
-  { name: 'Challenge Day 2 & Autumn Cup II Day 2 Sunday September 21st', price: 35, img: '/ticket1.svg' },
-  { name: 'Challenge & Autumn Cup II 2 days Saturday & Sunday September 20 & 21', price: 50, img: '/ticket2.svg' },
+  { name: 'Entry ticket Challenge Day 1 & Autumn Cup II Day 1 Saturday September 20th', price: 35, img: '/ticket1.svg' },
+  { name: 'Entry ticket Challenge Day 2 & Autumn Cup II Day 2 Sunday September 21st', price: 35, img: '/ticket1.svg' },
+  { name: 'Entry ticket Challenge & Autumn Cup II\n 2 days Saturday & Sunday\n September 20 & 21', price: 50, img: '/ticket2.svg' },
   { name: 'Hand bells', price: 3, img: '/hand_bells.jpg' },
   { name: 'Party blower', price: 3, img: '/item2.png' },
   { name: 'Hand Clapper', price: 5, img: '/item3.png' },
-  { name: 'Raffle ticket: If you win the raffle, you will receive an 18x24 canvas with your team', price: 8, img: '/raffle1.jpg' },
+  { name: 'Raffle ticket:\n If you win the raffle, you will receive an 18x24 canvas with your team', price: 8, img: '/raffle1.jpg' },
   { name: 'Metal Cowbell', price: 8, img: '/item4.png' },
-  { name: 'Raffle ticket: If you win the raffle, you will receive a 2026 Calendar with pictures of your team', price: 8, img: '/square_image3.jpeg' },
+  { name: 'Raffle ticket:\n If you win the raffle, you will receive a 2026 Calendar with pictures of your team', price: 8, img: '/square_image3.jpeg' },
 ];
 
 export default function Shop() {
